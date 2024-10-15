@@ -4,8 +4,9 @@ const express = require("express");
 const {InsertResume} = require("../Database/index.js")
 const router = express.Router();
 
-function ReadResume() {
-  fs.readFile("./Vaishnavi_Yadav_Resume.pdf", async (err, pdfBuffer) => {
+function ReadResume(username) {
+  const fname = username + ".pdf";
+  fs.readFile(fname, async (err, pdfBuffer) => {
     if (err) {
       console.error("Error reading PDF:", err);
       return;
@@ -38,7 +39,7 @@ function ReadResume() {
 
     try {
       data = await parsePdf(); 
-      InsertResume("vivek@gmail.com", data);
+      InsertResume(username, data);
       console.log("Resume data inserted to DB");
     } catch (error) {
       console.error("Error during PDF parsing:", error);

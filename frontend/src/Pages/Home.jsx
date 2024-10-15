@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate(); 
   return (
     <div className="min-h-screen bg-[#0a0e14] text-white">
-      {/* Navbar */}
+      
       <nav className="flex items-center justify-between px-6 py-4 bg-[#0a0e14]">
         <div className="flex items-center space-x-3">
           <img src={botImage} alt="Mock Mate Logo" className="h-10" />
@@ -27,7 +27,7 @@ const Home = () => {
           <p className="text-gray-400">
             Mock Mate provides realistic AI-powered mock interviews to help you master technical questions and build your confidence.
           </p>
-          <button className="text-[#00BFFF] text-white py-2 px-6 rounded-lg hover:text-[#00BFFF] transition"
+          <button className="text-[#00BFFF] text-white py-2 px-6 rounded-lg hover:text-white transition"
           onClick={() => navigate('/Signup')}
           >
             Get Started
