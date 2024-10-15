@@ -50,7 +50,6 @@ async function seperateData(userData){
   const text = response.text();
   
   const cleanedRes = cleanResponse(text);
-
   const parsedData = JSON.parse(cleanedRes);
   const resumeMap = new Map();
 
@@ -93,10 +92,10 @@ function mapToList(queMap){
   let sections = Array.from(queMap.keys());
   shuffleArray(sections);
 
-  let val = 0;
+  let val = 1;
   let secIds = [];
 
-  let queArray = [];
+  let queArray = ["Please introduce yourself."];
   sections.forEach(sec => {
     queArray.push(...queMap.get(sec));
     const list = queMap.get(sec);
@@ -111,10 +110,12 @@ function mapToList(queMap){
   return obj;
 }
 
-router.get("/questions", async (req, res) => {
+router.post("/questions", async (req, res) => {
   console.log("API called");
-  const userdata = await getResumeData("vivek@gmail.com");
-
+  const username = req.body.email;
+ 
+  const userdata = await getResumeData(username);
+  
   const map = await seperateData(userdata.resume);
   const queMap = new Map();
 
